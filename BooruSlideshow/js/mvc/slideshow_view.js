@@ -521,10 +521,13 @@ class SlideshowView
 	
 	displayImage(currentSlide) {
         var currentImage = this.uiElements.currentImage;
+        var bgImage = this.uiElements.bgImage;
 
         currentImage.src = currentSlide.fileUrl;
         currentImage.setAttribute('alt', currentSlide.id);
         currentImage.style.display = 'inline';
+
+        bgImage.style.backgroundImage = "url(" + currentSlide.fileUrl + ")";
 		
 		this.clearVideo();
         this.updateSlideSize();
@@ -563,6 +566,7 @@ class SlideshowView
         if (currentSlide == null)
             return;
 
+        var bgImage = this.uiElements.bgImage;
         var currentImage = this.uiElements.currentImage;
         var currentVideo = this.uiElements.currentVideo;
         
@@ -657,6 +661,7 @@ class SlideshowView
 
     clearImage() {
         var currentImage = this.uiElements.currentImage;
+
 
         currentImage.src = '';
         currentImage.removeAttribute('alt');

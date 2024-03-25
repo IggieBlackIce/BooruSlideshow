@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     new SlideshowController({
         'warningMessage': document.getElementById('warning-message'),
         'infoMessage': document.getElementById('info-message'),
+        'bgImage': document.getElementById('bg-image'),
         'currentImage': document.getElementById('current-image'),
         'currentVideo': document.getElementById('current-video'),
         'loadingAnimation': document.getElementById('loading-animation'),
