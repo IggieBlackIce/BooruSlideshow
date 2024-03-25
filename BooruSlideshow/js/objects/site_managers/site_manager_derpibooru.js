@@ -10,15 +10,28 @@ class SiteManagerDerpibooru extends SiteManager
 		return this.url + '/api/v1/json/search/posts?q=pony&per_page=1';
     }
     
-    buildRequestUrl(searchText, pageNumber)
+    buildRequestUrl(searchText, searchSorting, pageNumber)
 	{
 		var query = this.buildSiteSpecificQuery(searchText);
-		
+        var sortingQuery = this.buildSortingQuery(searchSorting);
 		var possibleAddedKey = this.sitesManager.model.derpibooruApiKey ? '&key=' + this.sitesManager.model.derpibooruApiKey : '';
 		
-		return this.url + '/api/v1/json/search/images?q=' + this.prepareQueryForDerpibooru(query) + '&page=' + pageNumber + '&per_page=' + this.pageLimit + possibleAddedKey;
-	}
+		return this.url + '/api/v1/json/search/images?q=' + query + sortingQuery + '&page=' + pageNumber + '&per_page=' + this.pageLimit + possibleAddedKey;
+    }
 
+    buildSortingQuery(searchSorting) {
+        var sortSplit = searchSorting.split(".", 2);
+        var sortTerm = sortSplit[0];
+        var sortOrder = sortSplit[1];
+        if (sortOrder != "asc")
+        {
+            sortOrder = "desc"
+        };
+        return "&sf=" + sortTerm + "&sd=" + sortOrder;
+    }
+
+    //not needed for derpi -Iggie
+    /*
 	prepareQueryForDerpibooru(searchQuery)
     {
         searchQuery = this.addCommasToSearchQuery(searchQuery);
@@ -29,7 +42,7 @@ class SiteManagerDerpibooru extends SiteManager
 	{
 		return searchQuery.replace(" ", ",");
 	}
-
+    
 	replaceUnderscoresWithSpaces(searchQuery)
 	{
 		let queryItems = searchQuery.split(",");
@@ -58,12 +71,12 @@ class SiteManagerDerpibooru extends SiteManager
 		
 		return queryItems.join(',');
 	}
-
+    
 	startWith(text, term)
 	{
 		return (text.substring(0,term.length) == term);
 	}
-
+    */
 	doesResponseTextIndicateOnline(responseText)
 	{
 		var jsonPosts;

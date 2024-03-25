@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'totalSlideNumber': document.getElementById('total-slide-number'),
         'thumbnailList': document.getElementById('thumbnail-list'),
         'searchTextBox': document.getElementById('search-text'),
+        'searchSortingBox': document.getElementById('search-sorting'),
         'searchButton': document.getElementById('search-button'),
         'firstNavButton': document.getElementById('first-button'),
         'previousNavButton': document.getElementById('previous-button'),

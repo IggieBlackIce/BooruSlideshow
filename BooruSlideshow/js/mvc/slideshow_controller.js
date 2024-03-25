@@ -243,8 +243,10 @@ class SlideshowController
     {
         this._view.clearUI();
         this._view.removeFocusFromSearchButton();
+        this._model.searchSorting = this._view.getSearchSorting();
 
         var searchText = this._model.searchText;
+        var searchSorting = this._model.searchSorting;
 
         if (searchText == '')
         {
@@ -277,7 +279,7 @@ class SlideshowController
 		
 		this._view.displayInfoMessage(message);
 		
-        this._model.performSearch(searchText);
+        this._model.performSearch(searchText, searchSorting);
     }
 
     sitesToSearchChanged(checked, site)

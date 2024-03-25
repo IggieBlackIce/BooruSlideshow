@@ -7,7 +7,8 @@ class SlideshowModel{
         this.videoMuted = false;
         
         this.searchText = "";
-        
+        this.searchSorting = "";
+
         this.sitesToSearch = {
             [SITE_ATFBOORU]: false,
             [SITE_DANBOORU]: false,
@@ -111,7 +112,7 @@ class SlideshowModel{
 		});
 	}
 
-    performSearch(searchText)
+    performSearch(searchText, searchSorting)
     {
         this.sitesManager.resetConnections();
 
@@ -120,7 +121,7 @@ class SlideshowModel{
 
         var _this = this;
 
-        this.sitesManager.performSearch(searchText, function () {
+        this.sitesManager.performSearch(searchText, searchSorting, function () {
 			_this.view.clearInfoMessage();
             _this.currentSlideChangedEvent.notify();
         });

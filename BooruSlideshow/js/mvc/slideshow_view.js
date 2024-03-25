@@ -237,6 +237,7 @@ class SlideshowView
             }
     
             if (document.activeElement !== _this.uiElements.searchTextBox &&
+                document.activeElement !== _this.uiElements.searchSortingBox &&
                 document.activeElement !== _this.uiElements.secondsPerSlideTextBox &&
                 document.activeElement !== _this.uiElements.maxWidthTextBox &&
                 document.activeElement !== _this.uiElements.maxHeightTextBox &&
@@ -833,6 +834,10 @@ class SlideshowView
 
     getSearchText() {
         return this.uiElements.searchTextBox.value;
+    }
+
+    getSearchSorting() {
+        return this.uiElements.searchSortingBox.value;
     }
 
     setFocusToSearchBox() {

@@ -170,11 +170,12 @@
 		right: 0;
 	}
 	
-	#search {
+	#search,
+	#search-sorting {
 		text-align:center;
 		background: #181a1f;
 		margin: auto;
-			width: 80%;
+		width: 80%;
 		padding: 10px;
 		border-radius: 5px;
 		clear: left;
@@ -199,17 +200,19 @@
 		margin-top: 10px;
 	}
 		
-	#search-text {
+	#search-text, 
+    #search-sorting {
 		padding: 5px 5px 5px 5px;
 		margin: 10px;
 		border-radius: 5px;
 		text-align:center;
 		text-decoration: none;
-			width: 19%;
+		width: 80%;
 		height: 20%;
-			border: 0px;
+		border: 0px;
 		background:#292d36;
 		color: #ffffff;
+        font-size: 25px;
 	}
 	
 	#sites-to-search,

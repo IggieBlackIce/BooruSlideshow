@@ -22,14 +22,15 @@ class SiteManager
 		console.log('buildPingRequestUrl() was not implemented.');
     }
     
-    buildRequestUrl(searchText, pageNumber)
+    buildRequestUrl(searchText, searchSorting, pageNumber)
 	{
 		console.log('buildRequestUrl() was not implemented.');
 	}
     
     buildSiteSpecificQuery(searchText)
 	{
-		var query = searchText.trim();
+        var query = searchText.trim();
+        //not needed for derpi and breaks things -Iggie
 		
 		for (var queryTermToReplace in this.siteQueryTermAssociations)
 		{
@@ -89,7 +90,7 @@ class SiteManager
 		console.log('doesResponseTextIndicateOnline() was not implemented.');
 	}
 
-	performSearch(searchText, doneSearchingSiteCallback)
+	performSearch(searchText, searchSorting, doneSearchingSiteCallback)
 	{
 		if (!this.isOnline)
 		{
@@ -99,7 +100,7 @@ class SiteManager
 
 		this.ranIntoErrorWhileSearching = false;
 		var pageNumber = this.lastPageLoaded + 1;
-		var url = this.buildRequestUrl(searchText, pageNumber);
+		var url = this.buildRequestUrl(searchText, searchSorting, pageNumber);
 		
 		var siteManager = this;
 		

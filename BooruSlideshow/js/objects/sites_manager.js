@@ -8,7 +8,8 @@ class SitesManager{
 		this.siteManagersCurrentlySearching = 0;
 		this.currentSlideNumber = 0;
 		this.allSortedSlides = [];
-		this.searchText = '';
+        this.searchText = '';
+        this.searchSorting = '';
 		this.isTryingToLoadMoreSlides = false;
 		this.callbackToRunAfterAllSitesFinishedSearching = null;
 		
@@ -175,9 +176,10 @@ class SitesManager{
 		}
 	}
 
-	performSearch(searchText, doneSearchingAllSitesCallback)
+	performSearch(searchText, searchSorting, doneSearchingAllSitesCallback)
 	{
-		this.searchText = searchText;
+        this.searchText = searchText;
+        this.searchSorting = searchSorting;
 		
 		var sitesManager = this;
 		
@@ -219,7 +221,7 @@ class SitesManager{
 			{
 				var sitesManager = this;
 				
-				siteManager.performSearch(this.searchText, function() {
+				siteManager.performSearch(this.searchText, this.searchSorting, function() {
 					sitesManager.siteManagersCurrentlySearching--;
 					
 					if (sitesManager.siteManagersCurrentlySearching == 0)
@@ -272,6 +274,7 @@ class SitesManager{
 			}
 		});
 
+        /*
 		slidesFromAllSitesToSort.sort(function(a,b) {
 			var sortingMethod = _this.getSortingMethod();
 			
@@ -291,7 +294,8 @@ class SitesManager{
 			
 			return b.date.getTime() - a.date.getTime();
 		});
-		
+		*/
+        //breaks derpi sorting -Iggie
 		Array.prototype.push.apply(this.allSortedSlides, slidesFromAllSitesToSort);
 	}
 

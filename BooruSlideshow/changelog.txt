@@ -1,5 +1,11 @@
 Changelog
 
+Version 11.0
+* Changed Derpibooru search to work 1:1 with the original search syntax
+* Added "Sorting" input field for derpibooru sorting 
+* Changed size search fields to be bigger
+* Other sites might not work properly right now
+
 Version 10.1
 * Updated manifest to version 3
 * Updated ATFBooru URL
